@@ -2,7 +2,6 @@ import modal
 from modal import Image
 
 # Setup - define our infrastructure with code!
-
 app = modal.App("pricer-service")
 image = Image.debian_slim().pip_install(
     "torch", "transformers", "bitsandbytes", "accelerate", "peft"
@@ -45,7 +44,6 @@ def price(description: str) -> float:
     )
 
     # Load model and tokenizer
-
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
